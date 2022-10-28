@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+			
+	
+				<div class="col-md-9" >
+				
+				<h1 th:text="${message}"></h1>
+				<div th:unless="${emp.name == 'lwin'}"  >
+				
+					<div th:text="${emp.name}"></div>
+					
+					<div th:text="${emp.degree}"></div>
+				
+					
+				 </div>
+				 
+				 <div th:each="e : ${emps}">
+				 <th:block th:if="e.name=='myat'" >
+				 		<p><strong>Hello myat how are you</strong></p>
+				 </th:block>
+				 	<div th:text="${e.name}"></div>
+					
+					<div th:text="${e.degree}"></div>
+				 
+				 
+				 </div>
+				 <th:block th:each="e:${emps}">
+				 <div th:switch="${e.degree}">
+						 <p th:case="'BSc'" th:text="${e.name}"></p>
+				 		<p th:case="'MSc'">You are MSc Degree holder</p>
+					 	<p th:case="'BE'">You are eBE Degree holder</p>
+				 
+				 
+				 
+				 </div>
+				 </th:block>
+				</div>
+	
+	
+	</div>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
